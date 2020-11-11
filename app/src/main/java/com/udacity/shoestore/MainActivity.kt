@@ -14,5 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         Timber.plant(Timber.DebugTree())
+        Timber.i("in activity main onCreate")
     }
 }

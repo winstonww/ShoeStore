@@ -6,4 +6,13 @@
     <string name="password_string_fragment_login">Password</string>
     <string name="register_string_fragment_login">Register</string>
     <string name="login_string_fragment_login">Login</string>
+    <string name="welcome_string_fragment_welcome">Welcome!</string>
+    <string name="details_string_fragment_welcome">Hi %1$s, please click Instructions to continue.</string>
+    <string name="next_string_fragment_welcome">Next</string>
+    <string name="instruction_string_fragment_instructions">Instructions</string>
+    <string name="details_string_fragment_instruction">Next page comprises of a list of shoes. Click next to continue</string>
+    <string name="details2_string_fragment_instructions">Click Next to continue.</string>
+    <string name="details1_string_fragment_instruction">Please choose your shoes from the shoe list.</string>
+    <string name="shoe1_string">Shoe1</string>
+    <string name="shoe2_string">Shoe2</string>
 </resources>

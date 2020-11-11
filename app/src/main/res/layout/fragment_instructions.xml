@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.instructions.InstructionsFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/instruction_textview_fragment_instruction"
+            style="@style/bigTextStyle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="132dp"
+            android:text="@string/instruction_string_fragment_instructions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/details_textview_fragment_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/details2_string_fragment_instructions"
+            app:layout_constraintEnd_toEndOf="@+id/instruction_textview_fragment_instruction"
+            app:layout_constraintStart_toStartOf="@+id/instruction_textview_fragment_instruction"
+            app:layout_constraintTop_toBottomOf="@+id/instruction_textview_fragment_instruction" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details1_string_fragment_instruction"
+            app:layout_constraintEnd_toEndOf="@+id/details_textview_fragment_instructions"
+            app:layout_constraintStart_toStartOf="@+id/details_textview_fragment_instructions"
+            app:layout_constraintTop_toBottomOf="@+id/details_textview_fragment_instructions" />
+
+        <Button
+            android:id="@+id/next_button_fragment_instructions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.798" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
