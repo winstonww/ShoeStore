@@ -36,13 +36,15 @@ class ShoeViewModel : ViewModel() {
         Timber.i(_shoeList.value?.joinToString())
     }
 
-    fun onEventSave(name: String, size: Double, company: String, description: String) {
-        addShoe(
-            name,
-            size,
-            company,
-            description
-        )
+    fun onEventSave(name: String, size: String, company: String, description: String) {
+
+        var sizeDouble : Double = 0.0
+        try {
+            sizeDouble = size.toDouble()
+        } catch (e: NumberFormatException) {
+            Timber.i("Invalid size entered")
+        }
+        addShoe(name, sizeDouble, company, description)
         _saveState.value = SaveState.SAVE
     }
     fun onEventSaveComplete() {

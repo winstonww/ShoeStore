@@ -43,9 +43,10 @@ class DetailsFragment : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
+
             viewModel.onEventSave(
                 binding.shoeNameEdittext.text.toString(),
-                binding.shoeSizeEdittext.text.toString().toDouble() ?: 0.0,
+                binding.shoeSizeEdittext.text.toString(),
                 binding.companyNameEdittext.text.toString(),
                 binding.descriptionEdittext.text.toString()
             )

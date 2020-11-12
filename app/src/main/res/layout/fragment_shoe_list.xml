@@ -15,32 +15,21 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/inner_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/shoe_textview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="20dp"
-                    android:text="@string/shoe2_string"
-                    android:textAlignment="center" />
-
-
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/add_shoe_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="20dp"
-                    android:clickable="true"
-                    android:src="@drawable/ic_add" />
             </LinearLayout>
 
-
         </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_shoe_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="20dp"
+            android:clickable="true"
+            android:src="@drawable/ic_add" />
 
     </FrameLayout>
 </layout>

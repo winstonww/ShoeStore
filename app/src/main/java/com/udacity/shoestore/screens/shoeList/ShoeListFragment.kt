@@ -9,11 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.ShoeViewModel
+import kotlinx.android.synthetic.main.shoe_row.view.*
 import timber.log.Timber
 
 /**
@@ -38,7 +38,16 @@ class ShoeListFragment : Fragment() {
 
 //        binding.shoeTextview.text = viewModel.shoeList.value?.joinToString() ?: ""
         viewModel.shoeList.observe(this as LifecycleOwner, Observer {
-            binding.shoeTextview.text = viewModel.shoeList.value?.joinToString(separator = "\n") ?: ""
+
+            for (shoe in viewModel.shoeList.value!!) {
+                val view = layoutInflater.inflate(R.layout.shoe_row, null)
+                view.name_text.setText(shoe.name)
+                view.company_text.setText(shoe.company)
+                view.size_text.setText(shoe.size.toString())
+                view.desc_text.setText(shoe.description)
+                binding.innerLayout.addView(view)
+            }
+//            binding.shoeTextview.text = viewModel.shoeList.value?.joinToString(separator = "\n") ?: ""
         })
 
         binding.addShoeButton.setOnClickListener {
