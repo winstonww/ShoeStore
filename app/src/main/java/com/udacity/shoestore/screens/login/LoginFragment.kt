@@ -13,7 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
-import timber.log.Timber
+import com.udacity.shoestore.models.LoginState
+import com.udacity.shoestore.models.LoginViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -45,9 +46,15 @@ class LoginFragment : Fragment() {
         }
 
         viewModel.loginState.observe(this as LifecycleOwner, Observer { ls ->
-            if (ls) {
-                navigateToWelcome()
-                viewModel.onEventLoginComplete()
+            when (ls) {
+                LoginState.REGISTER -> {
+                    navigateToWelcome()
+                    viewModel.onEventLoginComplete()
+                }
+                LoginState.LOGIN -> {
+                    navigateToShoeList()
+                    viewModel.onEventLoginComplete()
+                }
             }
         })
         return binding.root
@@ -55,6 +62,11 @@ class LoginFragment : Fragment() {
 
     private fun navigateToWelcome() {
         val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(viewModel.emailText.value ?: "")
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToShoeList() {
+        val action = LoginFragmentDirections.actionLoginFragmentToShoeListFragment()
         findNavController().navigate(action)
     }
 

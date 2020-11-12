@@ -1,9 +1,15 @@
-package com.udacity.shoestore.screens.login
+package com.udacity.shoestore.models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+enum class LoginState() {
+    LOGIN,
+    REGISTER,
+    LOGOUT,
+    NOOP
+}
 class LoginViewModel() : ViewModel() {
     private var _emailText = MutableLiveData<String>()
     val emailText : LiveData<String>
@@ -13,29 +19,29 @@ class LoginViewModel() : ViewModel() {
     val passwordText : LiveData<String>
         get() = _passwordText
 
-    private var _loginState = MutableLiveData<Boolean>()
-    val loginState : LiveData<Boolean>
+    private var _loginState = MutableLiveData<LoginState>()
+    val loginState : LiveData<LoginState>
         get() = _loginState
 
     init {
         _emailText.value = ""
         _passwordText.value = ""
-        _loginState.value = false
+        _loginState.value = LoginState.NOOP
     }
 
-    fun onLogin(email: String, password : String) {
+    fun onRegister(email: String, password : String) {
         _emailText.value = email
         _passwordText.value = password
-        _loginState.value = true
+        _loginState.value = LoginState.REGISTER
     }
 
-    fun onRegister(email: String, password: String) {
-        _emailText.value = email
-        _passwordText.value = password
-        _loginState.value = true
+    fun onLogin(email: String? = null, password: String? = null) {
+        _emailText.value = email ?: _emailText.value
+        _passwordText.value = password ?: _passwordText.value
+        _loginState.value = LoginState.LOGIN
     }
 
     fun onEventLoginComplete() {
-        _loginState.value = false
+        _loginState.value = LoginState.NOOP
     }
 }
