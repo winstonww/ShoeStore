@@ -38,12 +38,12 @@ class ShoeListFragment : Fragment() {
 
 //        binding.shoeTextview.text = viewModel.shoeList.value?.joinToString() ?: ""
         viewModel.shoeList.observe(this as LifecycleOwner, Observer {
-            binding.shoeTextview.text = viewModel.shoeList.value?.joinToString() ?: ""
+            binding.shoeTextview.text = viewModel.shoeList.value?.joinToString(separator = "\n") ?: ""
         })
 
         binding.addShoeButton.setOnClickListener {
             Timber.i("in addShoeButton listener")
-            Timber.i(viewModel.shoeList.value?.joinToString())
+            Timber.i(viewModel.shoeList.value?.joinToString(separator = "\n"))
             val action = ShoeListFragmentDirections.actionShoeListFragmentToDetailsFragment()
             findNavController().navigate(action)
         }
