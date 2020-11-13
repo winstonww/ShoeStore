@@ -2,6 +2,7 @@ package com.udacity.shoestore
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.udacity.shoestore.databinding.ActivityMainBinding
@@ -18,9 +19,10 @@ class MainActivity : AppCompatActivity() {
         Timber.i("in activity main onCreate")
 
         val navController = findNavController(R.id.myNavHostFragment)
-        binding.toolbar.setNavigationOnClickListener {
-            // Handle navigation icon press
-        }
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -34,5 +36,15 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.logout_menu, menu)
+        return true
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        Timber.i("in onSupportNavigateUp")
+        return findNavController(R.id.myNavHostFragment).navigateUp() || super.onSupportNavigateUp()
     }
 }
