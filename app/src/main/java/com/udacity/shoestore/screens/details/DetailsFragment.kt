@@ -23,7 +23,6 @@ import com.udacity.shoestore.models.ShoeViewModel
  */
 class DetailsFragment : Fragment() {
 
-//    private lateinit var viewModel : ShoeViewModel
     private val viewModel : ShoeViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -34,8 +33,7 @@ class DetailsFragment : Fragment() {
         val binding: FragmentDetailsBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_details, container, false)
 
-//        viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
-
+        binding.shoeViewModel = viewModel
 
         binding.cancelButton.setOnClickListener {
             val action = DetailsFragmentDirections.actionDetailsFragmentToShoeListFragment()

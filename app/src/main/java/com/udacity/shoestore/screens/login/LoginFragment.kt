@@ -70,8 +70,5 @@ class LoginFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun onRegister() {
-
-    }
 
 }

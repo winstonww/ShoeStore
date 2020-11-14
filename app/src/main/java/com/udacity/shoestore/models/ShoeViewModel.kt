@@ -27,9 +27,6 @@ class ShoeViewModel : ViewModel() {
         _saveState.value = SaveState.NOOP
     }
 
-    // data class Shoe(var name: String, var size: Double, var company: String, var description: String,
-    //                val images: List<String> = mutableListOf()) : Parcelable
-
     fun addShoe(name: String, size: Double, company: String, description: String) {
         Timber.i("Adding shoe")
         _shoeList.value?.add(Shoe(name, size, company, description))

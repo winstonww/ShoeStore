@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 enum class LoginState() {
     LOGIN,
     REGISTER,
-    LOGOUT,
     NOOP
 }
 class LoginViewModel() : ViewModel() {
