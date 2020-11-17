@@ -1,5 +1,9 @@
 package com.udacity.shoestore.models
 
+import android.util.Log
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import androidx.databinding.Observable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +14,8 @@ enum class SaveState {
     SAVE,
     NOOP
 }
-class ShoeViewModel : ViewModel() {
+
+class ShoeViewModel :  ViewModel() {
     private var _shoeList = MutableLiveData<MutableList<Shoe>>()
     val shoeList : LiveData<MutableList<Shoe>>
         get() = _shoeList
@@ -18,7 +23,6 @@ class ShoeViewModel : ViewModel() {
     private var _saveState = MutableLiveData<SaveState>()
     val saveState : LiveData<SaveState>
         get() = _saveState
-
 
     init {
         Timber.i("in init")
@@ -34,7 +38,7 @@ class ShoeViewModel : ViewModel() {
     }
 
     fun onEventSave(name: String, size: String, company: String, description: String) {
-
+        Log.i("ShoeViewModel", "onEventSave name $name company $company")
         var sizeDouble : Double = 0.0
         try {
             sizeDouble = size.toDouble()

@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentDetailsBinding
 import com.udacity.shoestore.models.SaveState
+import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoeViewModel
 
 /**
@@ -25,30 +26,26 @@ class DetailsFragment : Fragment() {
 
     private val viewModel : ShoeViewModel by activityViewModels()
 
+    private val shoeData = Shoe("", 0.0, "", "")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding: FragmentDetailsBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_details, container, false)
+
+        val binding = FragmentDetailsBinding.inflate(
+            inflater, container, false)
 
         binding.shoeViewModel = viewModel
+        binding.lifecycleOwner = this
+        binding.shoeData = shoeData
 
         binding.cancelButton.setOnClickListener {
             val action = DetailsFragmentDirections.actionDetailsFragmentToShoeListFragment()
             findNavController().navigate(action)
         }
 
-        binding.saveButton.setOnClickListener {
-
-            viewModel.onEventSave(
-                binding.shoeNameEdittext.text.toString(),
-                binding.shoeSizeEdittext.text.toString(),
-                binding.companyNameEdittext.text.toString(),
-                binding.descriptionEdittext.text.toString()
-            )
-        }
         viewModel.saveState.observe(this as LifecycleOwner, Observer{ss ->
             when(ss) {
                 SaveState.SAVE -> {

@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.databinding.ShoeRowBinding
 import com.udacity.shoestore.models.ShoeViewModel
 import kotlinx.android.synthetic.main.shoe_row.view.*
 import timber.log.Timber
@@ -32,20 +34,13 @@ class ShoeListFragment : Fragment() {
         val binding : FragmentShoeListBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoe_list, container, false)
 
-//        val viewModel = ViewModelProvider(this).get(ShoeViewModel::class.java)
-
-//        binding.shoeTextview.text = viewModel.shoeList.value?.joinToString() ?: ""
         viewModel.shoeList.observe(this as LifecycleOwner, Observer {
 
             for (shoe in viewModel.shoeList.value!!) {
-                val view = layoutInflater.inflate(R.layout.shoe_row, null)
-                view.name_text.setText(shoe.name)
-                view.company_text.setText(shoe.company)
-                view.size_text.setText(shoe.size.toString())
-                view.desc_text.setText(shoe.description)
-                binding.innerLayout.addView(view)
+                val inBinding = ShoeRowBinding.inflate(layoutInflater)
+                inBinding.shoeData = shoe
+                binding.innerLayout.addView(inBinding.root)
             }
-//            binding.shoeTextview.text = viewModel.shoeList.value?.joinToString(separator = "\n") ?: ""
         })
 
         binding.addShoeButton.setOnClickListener {
